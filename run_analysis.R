@@ -1,4 +1,4 @@
-setwd("/Users/hederferreira/Dev/Estudos/r/3_get_and_cleanning_data/week4/Project")
+
 
 require(dplyr)
 
@@ -52,7 +52,7 @@ colindex <- union_all(colindex_act, colindex_sub, colindex_mean_std)
 #Ordering lines by activity and subject_id
 final_df <- arrange(final_df[, colindex], activity, subject_id)
 
-write.table(final_df, "./final_df.txt", sep="\t") 
+write.table(final_df, "./final_df.txt", sep="\t", row.name=FALSE) 
 
 #Create data frame of means
 ######################################################
@@ -62,6 +62,6 @@ groups <- group_by(final_df, activity, subject_id)
 #calculate mean of all columns by groups
 averages_df <- summarize_all(groups, mean)
 
-write.table(averages_df, "./averages_df.txt", sep="\t") 
+write.table(averages_df, "./averages_df.txt", sep="\t", row.name=FALSE) 
 
 
